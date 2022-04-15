@@ -87,5 +87,19 @@ function todo() {
       localStorage.setItem("todoTitle", JSON.stringify(data));
       render();
     }
+
+    if (e.target.classList.contains("editBtn")) {
+      let newTitle = prompt("Enter New Title");
+      editId = Number(e.target.dataset.id);
+      todoTitle.map((item) => {
+        if (item.id === editId) {
+          item.title = newTitle;
+        }
+
+        return item;
+      });
+      localStorage.setItem("todoTitle", JSON.stringify(todoTitle));
+    }
+    render();
   });
 }
