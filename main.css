@@ -17,8 +17,8 @@ button {
 }
 
 .container {
-  max-width: 1920px;
-  height: 1080px;
+  width: 100%;
+  height: 1000px;
   background-color: #0077c3;
 }
 
@@ -69,14 +69,15 @@ button {
   height: 24px;
   color: #fff;
 }
-.container .header .logo {
-  display: flex;
-}
-.container .header .logo .imgLogo {
-  margin-right: 8px;
+
+.container .header .logo h1 {
+  font-size: 40px;
+  color: #fff;
 }
 
 .container .header .tab2 {
+  padding-left: 90px;
+  width: 220px;
   display: flex;
 }
 .container .header .tab2 .box4 {
@@ -99,11 +100,13 @@ button {
   width: 41px;
   height: 41px;
 }
+/*  */
 
 .container .mainBoard {
   background-color: #0077c3;
   padding-top: 21px;
   padding-left: 35px;
+  width: 100%;
 }
 .container .mainBoard h2 {
   font-weight: 700;
@@ -116,17 +119,21 @@ button {
 }
 
 .container .contentBox {
-  background-color: #0077c3;
-  display: flex;
-  flex-wrap: wrap;
 }
 .container .contentBox .todoContainer {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  overflow-x: auto;
 }
 .container .contentBox .todoContainer .todoBox {
-  text-align: center;
-  width: 339px;
+  display: flex;
+  vertical-align: top;
+  overflow-y: auto;
+  display: inline-block;
+  text-align: left;
+  width: 200px;
+  max-height: 100%;
   background-color: #e3e4e6;
   padding: 10px;
   border-radius: 5px;
@@ -138,10 +145,11 @@ button {
 .container .contentBox .todoContainer .todoBox p {
   padding-bottom: 10px;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 35px;
   color: #40506c;
 }
+
 .container .contentBox .todoContainer .todoBox .editBtn {
   position: absolute;
   top: 10px;
@@ -161,18 +169,30 @@ button {
   cursor: pointer;
   color: #4e97c2;
 }
-.container .contentBox .todoContainer .todoBox .todoList {
-  /* padding: 10px; */
+
+.container .contentBox .todoContainer .todoBox .todos .todoList .delBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 5px;
+  cursor: pointer;
+  color: #4e97c2;
+}
+.container .contentBox .todoContainer .todoBox .todos .todoList {
+  padding: 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  text-align: center;
   color: #1e1e1e;
   background-color: #fff;
   margin-bottom: 10px;
   border-radius: 5px;
-  text-align: left;
+  position: relative;
 }
-
+.container .contentBox .todoContainer .todoBox .todos .todoList:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 .container .contentBox .todoContainer .todoBox .addBtn {
   color: #666666;
   font-weight: 400;
@@ -182,10 +202,10 @@ button {
 
 .container .contentBox .addTodo {
   cursor: pointer;
-  width: 347px;
+  width: 200px;
   height: 40px;
   text-align: left;
-  padding: 8px 221px 8px 16px;
+  padding: 8px 21px 8px 16px;
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;

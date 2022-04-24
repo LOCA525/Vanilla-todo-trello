@@ -1,105 +1,131 @@
-document.addEventListener("DOMContentLoaded", todo);
-
 function todo() {
-  let todoTitle = JSON.parse(localStorage.getItem("todoTitle"));
-  if (todoTitle === null) {
-    localStorage.setItem("todoTitle", JSON.stringify([]));
+  const todoContainer = document.querySelector(".todoContainer");
+  const date = new Date();
+
+  const createId = () => {
+    const idDate =
+      `${date.getFullYear()}` +
+      `${date.getMonth() + 1}` +
+      `${date.getDate()}` +
+      `${date.getHours()}` +
+      `${date.getMinutes()}`;
+    const id = Math.floor(Number(idDate) + Math.random() * Number(idDate));
+    return id;
+  };
+
+  let data = JSON.parse(localStorage.getItem("data"));
+  if (data === null) {
+    localStorage.setItem("data", JSON.stringify([]));
   }
 
-  let todo = JSON.parse(localStorage.getItem("todo"));
-  if (todo === null) {
-    localStorage.setItem("todo", JSON.stringify([]));
-  }
-  const addBtn = document.querySelector(".addBtn");
-  const contentBox = document.querySelector(".contentBox");
-  const todoBox = document.querySelector(".todoBox");
-  const todoContainer = document.querySelector(".todoContainer");
-  const xBtn = document.querySelector(".xBtn");
-  const render = () => {
-    todoContainer.innerHTML = todoTitle
+  function render() {
+    todoContainer.innerHTML = data
       .map((item) => {
         return `
-      <ul class="todoBox">
-      <p>${item.title}</p>
-      <button class="addBtn">+ Add another list</button>
-      <button class="xBtn" data-id="${item.id}">🅧</button>
-      <button class="editBtn" data-id="${item.id}">EDIT</button>
-      <ul class="todoList">
-      </ul>
-      </ul>
+        <ul class="todoBox">
+          <p>${item.title}</p>
+          <button class="addBtn" data-id="${item.id}">+ Add Todo</button>
+          <button class="xBtn" data-id="${item.id}" >🅧</button>
+          <button class="editBtn" data-id="${item.id}">EDIT</button>
+        
+          <ul class="todos">
+            ${item.content
+              .map((e) => {
+                return `
+                <li class="todoList" data-id="${e.id}">${e.todo}
+                <button class="delBtn" data-id="${e.id}" >🅧</button>
+                
+                </li>`;
+              })
+              .join("")}
+          </ul>
+        
+        </ul>
       `;
       })
       .join("");
-  };
-  render();
-
-  // const todoList = document.querySelector(".todoList");
-  // const render2 = () => {
-  //   if (todoList !== null) {
-  //     todoList.innerHTML = todo
-  //       .map((item) => {
-  //         return `
-  //       <li class="todoList">${item.todo}</li>`;
-  //       })
-  //       .join("");
-  //   }
-  // };
-  // render2();
+  }
 
   document.addEventListener("click", (e) => {
-    const now = new Date();
-    const idNow = `${now.getFullYear()}${now.getMonth()}${now.getDate()}${now.getHours()}${now.getSeconds()}`;
-    const id = Math.floor(Number(idNow) + Math.random() * Number(idNow));
-    let editId = null;
+    e.preventDefault();
 
     if (e.target.classList.contains("addTodo")) {
-      e.preventDefault();
-      let title = prompt("Please enter a title");
-      todoTitle.push({
-        title: title,
-        id: id,
-      });
-
-      localStorage.setItem("todoTitle", JSON.stringify(todoTitle));
-
+      let title = prompt("제목을 입력하세요");
+      if (title) {
+        data.push({
+          title: title,
+          id: createId(),
+          content: [],
+        });
+        localStorage.setItem("data", JSON.stringify(data));
+      }
       render();
-
-      return;
     }
 
-    // if (e.target.classList.contains("addBtn")) {
-    //   let content = prompt("Please enter a Todo");
-
-    //   todo.push({
-    //     todo: content,
-    //   });
-
-    //   localStorage.setItem("todo", JSON.stringify(todo));
-
-    //   render2();
-
-    //   return;
-    // }
-
     if (e.target.classList.contains("xBtn")) {
-      const data = todoTitle.filter((item) => item.id !== Number(e.target.dataset.id));
-      todoTitle = data;
-      localStorage.setItem("todoTitle", JSON.stringify(data));
+      const newData = data.filter((item) => item.id !== Number(e.target.dataset.id));
+      data = newData;
+      localStorage.setItem("data", JSON.stringify(data));
+      render();
+    }
+
+    if (e.target.classList.contains("delBtn")) {
+      data.map((item) => {
+        const newContent = item.content.filter((item) => item.id !== Number(e.target.dataset.id));
+        item.content = newContent;
+      });
+
+      localStorage.setItem("data", JSON.stringify(data));
       render();
     }
 
     if (e.target.classList.contains("editBtn")) {
-      let newTitle = prompt("Enter New Title");
-      editId = Number(e.target.dataset.id);
-      todoTitle.map((item) => {
-        if (item.id === editId) {
-          item.title = newTitle;
-        }
+      let editData = prompt("수정할내용을 입력하세요.");
+      if (editData) {
+        data.map((item) => {
+          if (item.id === Number(e.target.dataset.id)) {
+            item.title = editData;
+          }
+        });
+      }
 
-        return item;
-      });
-      localStorage.setItem("todoTitle", JSON.stringify(todoTitle));
+      localStorage.setItem("data", JSON.stringify(data));
+      render();
     }
-    render();
+    if (e.target.classList.contains("todoList")) {
+      let editTodo = prompt("수정할 내용을 입력하세요.");
+      if (editTodo) {
+        data.map((item) => {
+          item.content.map((item) => {
+            if (item.id === Number(e.target.dataset.id)) {
+              item.todo = editTodo;
+            }
+          });
+        });
+      }
+
+      localStorage.setItem("data", JSON.stringify(data));
+      render();
+    }
+
+    if (e.target.classList.contains("addBtn")) {
+      let todo = prompt("할일을 입력하세요.");
+      if (todo) {
+        data.map((item) => {
+          if (item.id === Number(e.target.dataset.id)) {
+            item.content.push({
+              todo: todo,
+              id: createId(),
+            });
+          }
+        });
+      }
+
+      localStorage.setItem("data", JSON.stringify(data));
+      render();
+    }
   });
+
+  render();
 }
+todo();
