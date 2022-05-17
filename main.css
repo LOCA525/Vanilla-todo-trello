@@ -69,9 +69,13 @@ button {
   height: 24px;
   color: #fff;
 }
-
+.container .header .logo {
+  display: flex;
+  align-items: center;
+}
 .container .header .logo h1 {
-  font-size: 40px;
+  font-size: 30px;
+  line-height: 1;
   color: #fff;
 }
 
