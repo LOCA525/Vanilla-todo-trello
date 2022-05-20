@@ -195,37 +195,40 @@ button {
 .container .contentBox .todoContainer .todoBox .xBtn {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 12px;
   font-size: 15px;
   cursor: pointer;
-  color: #4e97c2;
+  color: #40506c;
 }
 .container .contentBox .todoContainer .todoBox .todos {
   max-height: calc(100vh - 310px);
-  white-space: nowrap;
   overflow-y: auto;
 }
 
 .container .contentBox .todoContainer .todoBox .todos .todoList .delBtn {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 5px;
+  top: 0px;
+  right: 2px;
+  font-size: 15px;
   cursor: pointer;
-  color: #4e97c2;
+  color: #1e1e1e;
 }
 .container .contentBox .todoContainer .todoBox .todos .todoList {
-  overflow: auto;
-  padding: 10px;
+  display: block;
+  padding: 20px 10px 10px 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   text-align: center;
   color: #1e1e1e;
   background-color: #fff;
+  word-break: break-all;
   margin-bottom: 10px;
   border-radius: 5px;
   position: relative;
+  white-space: normal;
+}
+.container .contentBox .todoContainer .todoBox .todos .todoList > p {
 }
 .container .contentBox .todoContainer .todoBox .todos .on {
   display: none;

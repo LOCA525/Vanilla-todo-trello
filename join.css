@@ -58,6 +58,7 @@ button {
   margin-bottom: 20px;
   border: 2px solid #dfe1e6;
   border-radius: 3px;
+  transition: 0.5s;
 }
 
 .container .joinBox .joinForm {
@@ -74,7 +75,57 @@ button {
   color: #5e6c84;
 }
 
+.container .joinBox .loginForm .joinBtn {
+  font-size: 15px;
+  width: 302px;
+  height: 44px;
+  padding: 7px;
+  background: #61bd4f;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+}
+.container .joinBox .loginForm > input {
+  width: 302px;
+  height: 44px;
+  padding: 7px;
+  background: #fafbfc;
+  margin-bottom: 20px;
+  border: 2px solid #dfe1e6;
+  border-radius: 3px;
+  transition: 0.5s;
+}
+.container .joinBox .loginForm > input:hover {
+  border-color: #0077c3;
+}
+.container .joinBox .joinForm > input:hover {
+  border-color: #0077c3;
+}
+.container .joinBox .loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container .joinBox .loginForm > p {
+  text-align: center;
+  width: 320px;
+  margin: 20px 0 20px 0;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5e6c84;
+}
 .container .joinBox .joinForm .joinBtn {
+  font-size: 15px;
+  width: 302px;
+  height: 44px;
+  padding: 7px;
+  background: #61bd4f;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.container .joinBox .loginForm .loginBtn {
   font-size: 15px;
   width: 302px;
   height: 44px;

@@ -40,9 +40,10 @@ function todo() {
             ${item.content
               .map((e) => {
                 return `
-                <li class="todoList" data-id="${e.id}">${e.todo}
+                <li class="todoList" data-id="${e.id}">
+                  ${e.todo}
                 
-                <button class="delBtn" data-id="${e.id}" >🅧</button>
+                  <button class="delBtn" data-id="${e.id}" >🅧</button>
                 
                 </li>
                 <form type="submit" class= "todoList Input on" data-id="${e.id}">
