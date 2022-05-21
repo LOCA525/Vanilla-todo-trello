@@ -2,9 +2,9 @@ const loginPage = () => {
   const goTodo = () => {
     location.href = "/page/index.html";
   };
-  let user = JSON.parse(localStorage.getItem("user"));
-  if (user === null) {
-    localStorage.setItem("user", JSON.stringify([]));
+  let users = JSON.parse(localStorage.getItem("users"));
+  if (users === null) {
+    localStorage.setItem("users", JSON.stringify([]));
   }
 
   const email = document.querySelector(".emailInput");
@@ -19,13 +19,15 @@ const loginPage = () => {
     } else if (password.value === "") {
       alert("비밀번호를 입력하세요.");
     } else {
-      for (let i = 0; i < user.length; i++) {
-        if (email.value === user[i].email && password.value === user[i].password) {
+      for (let i = 0; i < users.length; i++) {
+        if (email.value === users[i].email && password.value === users[i].password) {
+          let user = [email.value];
+          localStorage.setItem("user", JSON.stringify(user));
           alert("로그인 완료!!");
           goTodo();
           return;
         } else {
-          if (i === user.length - 1) {
+          if (i === users.length - 1) {
             return alert("아이디나 비밀번호를 확인해주세요");
           }
         }

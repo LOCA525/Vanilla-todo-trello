@@ -1,7 +1,8 @@
 function todo() {
   const todoContainer = document.querySelector(".todoContainer");
   const date = new Date();
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   const createId = () => {
     const idDate =
       `${date.getFullYear()}` +
@@ -17,7 +18,6 @@ function todo() {
   if (data === null) {
     localStorage.setItem("data", JSON.stringify([]));
   }
-
   function render() {
     todoContainer.innerHTML = data
       .map((item) => {
