@@ -6,6 +6,10 @@ const loginPage = () => {
   if (users === null) {
     localStorage.setItem("users", JSON.stringify([]));
   }
+  let user = JSON.parse(localStorage.getItem("user"));
+  if (user === null) {
+    localStorage.setItem("user", JSON.stringify([]));
+  }
 
   const email = document.querySelector(".emailInput");
   const name = document.querySelector(".nameInput");
@@ -21,7 +25,12 @@ const loginPage = () => {
     } else {
       for (let i = 0; i < users.length; i++) {
         if (email.value === users[i].email && password.value === users[i].password) {
-          let user = [email.value];
+          let user = [
+            {
+              email: email.value,
+              password: password.value,
+            },
+          ];
           localStorage.setItem("user", JSON.stringify(user));
           alert("로그인 완료!!");
           goTodo();

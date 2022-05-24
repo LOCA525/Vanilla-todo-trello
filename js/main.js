@@ -18,6 +18,7 @@ function todo() {
   if (data === null) {
     localStorage.setItem("data", JSON.stringify([]));
   }
+
   function render() {
     todoContainer.innerHTML = data
       .map((item) => {
@@ -26,7 +27,7 @@ function todo() {
           <p class="title1" data-id="${item.id}">
             ${item.title}
           </p>
-
+          
           <form type="submit" class="title1 Input on" data-id="${item.id}">
                 <input type="text" data-id="${item.id}" placeholder="" class= "titleEditInput">
           </form>
@@ -73,14 +74,18 @@ function todo() {
         });
         localStorage.setItem("data", JSON.stringify(data));
       }
-      render();
+      if (data !== null) {
+        render();
+      }
     }
 
     if (e.target.classList.contains("xBtn")) {
       const newData = data.filter((item) => item.id !== Number(e.target.dataset.id));
       data = newData;
       localStorage.setItem("data", JSON.stringify(data));
-      render();
+      if (data !== null) {
+        render();
+      }
     }
 
     if (e.target.classList.contains("delBtn")) {
@@ -90,7 +95,9 @@ function todo() {
       });
 
       localStorage.setItem("data", JSON.stringify(data));
-      render();
+      if (data !== null) {
+        render();
+      }
     }
 
     if (e.target.classList.contains("title1")) {
@@ -122,7 +129,9 @@ function todo() {
                       });
                     }
                     localStorage.setItem("data", JSON.stringify(data));
-                    render();
+                    if (data !== null) {
+                      render();
+                    }
                   }
                 });
               });
@@ -181,7 +190,9 @@ function todo() {
                     }
                   }
                   localStorage.setItem("data", JSON.stringify(data));
-                  render();
+                  if (data !== null) {
+                    render();
+                  }
                 });
               });
             }
@@ -221,10 +232,14 @@ function todo() {
       }
 
       localStorage.setItem("data", JSON.stringify(data));
-      render();
+      if (data !== null) {
+        render();
+      }
     }
   });
 
-  render();
+  if (data !== null) {
+    render();
+  }
 }
 todo();
