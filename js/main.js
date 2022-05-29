@@ -2,7 +2,17 @@ function todo() {
   const todoContainer = document.querySelector(".todoContainer");
   const date = new Date();
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log(user);
+
+  function goLogin() {
+    location.href = "/page/login.html";
+  }
+
+  if (user === null) {
+    alert("로그인이 필요합니다!");
+
+    goLogin();
+  }
+
   const createId = () => {
     const idDate =
       `${date.getFullYear()}` +
@@ -26,6 +36,7 @@ function todo() {
         <ul class="todoBox">
           <p class="title1" data-id="${item.id}">
             ${item.title}
+            <p class="user">user : ${item.user}</p>
           </p>
           
           <form type="submit" class="title1 Input on" data-id="${item.id}">
@@ -71,6 +82,7 @@ function todo() {
           title: title,
           id: createId(),
           content: [],
+          user: user,
         });
         localStorage.setItem("data", JSON.stringify(data));
       }

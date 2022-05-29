@@ -25,12 +25,7 @@ const loginPage = () => {
     } else {
       for (let i = 0; i < users.length; i++) {
         if (email.value === users[i].email && password.value === users[i].password) {
-          let user = [
-            {
-              email: email.value,
-              password: password.value,
-            },
-          ];
+          let user = email.value;
           localStorage.setItem("user", JSON.stringify(user));
           alert("로그인 완료!!");
           goTodo();

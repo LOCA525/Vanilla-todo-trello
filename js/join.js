@@ -34,6 +34,8 @@ const joinPage = () => {
       localStorage.setItem("users", JSON.stringify(users));
 
       alert("회원가입에 성공하였습니다");
+      goLogin();
+      return;
     } else {
       for (let i = 0; i < users.length; i++) {
         if (email.value === users[i].email) {
