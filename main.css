@@ -238,15 +238,13 @@ button {
   border-radius: 5px;
   position: relative;
   white-space: normal;
+  box-shadow: 0 1px 0 #091e4240;
 }
-.container .contentBox .todoContainer .todoBox .todos .todoList > p {
-}
+
 .container .contentBox .todoContainer .todoBox .todos .on {
   display: none;
 }
 
-.container .contentBox .todoContainer .todoBox .todos .todoList.Input {
-}
 .container .contentBox .todoContainer .todoBox .todos .todoListEditInput {
   font-size: 16px;
   line-height: 24px;
