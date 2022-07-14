@@ -113,12 +113,8 @@ function todo() {
     }
 
     if (e.target.classList.contains("title1")) {
-      const todoBox = document.querySelector(".todoBox");
-      const title1 = document.querySelector(".title1");
-      const title1InputOn = document.querySelector(".title1.Input.on");
       const titleEditInput = document.querySelectorAll(".titleEditInput");
       const conBox = document.querySelectorAll(".container .title1");
-      const conBox2 = document.querySelectorAll(".container .Input");
 
       const editTitle = (e) => {
         conBox.forEach((elem) => {
@@ -152,28 +148,6 @@ function todo() {
         });
       };
       editTitle(e);
-
-      // let editedTitle = prompt("수정할내용을 입력하세요.");
-      // if (editedTitle) {
-      //   data.map((item) => {
-      //     if (item.id === Number(e.target.dataset.id)) {
-      //       item.title = editedTitle;
-      //     }
-      //   });
-      // }
-      // localStorage.setItem("data", JSON.stringify(data));
-      // render();
-
-      // let editData = prompt("수정할내용을 입력하세요.");
-      // if (editData) {
-      //   data.map((item) => {
-      //     if (item.id === Number(e.target.dataset.id)) {
-      //       item.title = editData;
-      //     }
-      //   });
-      // }
-      // localStorage.setItem("data", JSON.stringify(data));
-      // render();
     }
 
     if (e.target.classList.contains("todoList")) {
@@ -214,21 +188,6 @@ function todo() {
 
       editTodo(e);
     }
-    // if (e.target.classList.contains("todoList")) {
-    //   let editTodo = prompt("수정할 내용을 입력하세요.");
-    //   if (editTodo) {
-    //     data.map((item) => {
-    //       item.content.map((item) => {
-    //         if (item.id === Number(e.target.dataset.id)) {
-    //           item.todo = editTodo;
-    //         }
-    //       });
-    //     });
-    //   }
-
-    //   localStorage.setItem("data", JSON.stringify(data));
-    //   render();
-    // }
 
     if (e.target.classList.contains("addBtn")) {
       let todo = prompt("할일을 입력하세요.");
