@@ -1,6 +1,6 @@
 const loginPage = () => {
   const goTodo = () => {
-    location.href = "/page/todo.html";
+    location.href = "../page/todo.html";
   };
   let users = JSON.parse(localStorage.getItem("users"));
   if (users === null) {

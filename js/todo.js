@@ -4,7 +4,7 @@ function todo() {
   const user = JSON.parse(localStorage.getItem("user"));
 
   function goLogin() {
-    location.href = "/page/login.html";
+    location.href = "../page/login.html";
   }
 
   if (user === null) {

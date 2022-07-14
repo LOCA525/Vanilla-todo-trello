@@ -4,7 +4,7 @@ const joinPage = () => {
     localStorage.setItem("users", JSON.stringify([]));
   }
   const goLogin = () => {
-    location.href = "/page/login.html";
+    location.href = "../page/login.html";
   };
 
   const email = document.querySelector(".emailInput");
